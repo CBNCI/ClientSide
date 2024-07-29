@@ -7,7 +7,7 @@ function Home() {
     return(
         <div>
         <h1>Your perfect trip starts here</h1>
-        < SearchCity />
+        <SearchCity />
         <br></br>
         <Link to="/accomodation">Accomodation</Link> |&nbsp;
         <Link to="/attractions">Attractions</Link> |&nbsp;

@@ -1,8 +1,6 @@
 import { useState} from 'react';
-import axios from 'axios';
-import { Navigate, Route, Routes} from 'react-router-dom';
 
-function SearchCity (props) {
+function SearchCity ({ onCitySubmit }) {
     const[city, setCity] = useState("");
 
     function handleCityInput(e){
@@ -10,25 +8,24 @@ function SearchCity (props) {
         setCity(e.target.value);
     }
 
-    async function handleSubmit(e){
+    function handleSubmit(e){
         e.preventDefault();
-        try {
-            localStorage.setItem("");
-        }
-        catch (error) {
-            console.error('Error submitting city:', error);
-        }
+    if (city) {
+      onCitySubmit(city); // Pass the city to the parent component
     }
+    else {
+        console.error('onCitySubmit is not a function');
+      }
+  }
 
     return (
         <div>
-          <h2>Enter City</h2>
           <form onSubmit={handleSubmit}>
             <input 
               type="text" 
               value={city} 
               onChange={handleCityInput} 
-              placeholder="Enter city name" 
+              placeholder="Where would you like to go?" 
             />
             <button type="submit">Submit</button>
           </form>
