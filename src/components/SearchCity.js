@@ -1,21 +1,13 @@
 import { useState} from 'react';
 
-function SearchCity ({ onCitySubmit }) {
-    const[city, setCity] = useState("");
+function SearchCity ({ city, setCity }) {
 
-    function handleCityInput(e){
-        e.preventDefault();
+    const handleCityInput = (e) => { // get city from user
         setCity(e.target.value);
     }
 
     function handleSubmit(e){
         e.preventDefault();
-    if (city) {
-      onCitySubmit(city); // Pass the city to the parent component
-    }
-    else {
-        console.error('onCitySubmit is not a function');
-      }
   }
 
     return (

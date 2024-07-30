@@ -4,12 +4,12 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import SearchCity from '../components/SearchCity';
 
-function Attractions() {
+function Attractions({ city, setCity }) {
 
     return(
         <div>
         <h1>Your perfect trip starts here</h1>
-        <SearchCity  />
+        <SearchCity city={city} setCity={setCity}/>
         <br></br>
         <Link to="/accomodation">Accomodation</Link> |&nbsp;
         <Link to="/attractions">Attractions</Link> |&nbsp;
