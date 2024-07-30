@@ -7,11 +7,12 @@ import SearchCity from '../components/SearchCity'; // getting value for city fro
 function Events({ city, setCity }) {
     const [error, setError] = useState('');
     const [name, setName] = useState('');
+    const [submittedCity, setSubmittedCity] = useState('');
 
-    async function searchEvent() {
+    async function searchEvent(cityToSearch) {
         setError('');
 
-        if (!city) {
+        if (!cityToSearch) {
           setError("Please enter a city name");
           return; 
         } 
@@ -31,13 +32,13 @@ function Events({ city, setCity }) {
           } 
           else {
             // error response
-            setError(`Events in ${city} could not be found, make sure you entered a valid town`);
+            setError(`Events in ${cityToSearch} could not be found, make sure you entered a valid town`);
           }
         }
         catch (e)  {
             if (e.response && e.response.status === 404) {
               // error response
-                setError(`Events in ${city} could not be found, make sure you entered a valid town`);
+                setError(`Events in ${cityToSearch} could not be found, make sure you entered a valid town`);
             } 
             else {
               // error response
@@ -47,22 +48,23 @@ function Events({ city, setCity }) {
     }
 
     function handleCitySubmit(submittedCity) {
-        setCity(submittedCity); // Update city with the submitted city
+        setCity(submittedCity); 
+        setSubmittedCity(submittedCity);// Update city with the submitted city
       }
 
     useEffect(() => {
       // running search event function
-        if (city) {
-          searchEvent();
+        if (submittedCity) {
+          searchEvent(submittedCity);
         }
-      }, [city]);
+      }, [submittedCity]);
 
     return(
       // top half stays the same as home
       // error and response displays
         <div>
         <h1>Your perfect trip starts here</h1>
-        <SearchCity city={city} setCity={setCity} />
+        <SearchCity city={city} handleCitySubmit={handleCitySubmit}  />
         <br></br>
         <Link to="/accomodation">Accomodation</Link> |&nbsp;
         <Link to="/attractions">Attractions</Link> |&nbsp;

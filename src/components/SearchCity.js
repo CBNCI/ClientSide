@@ -1,13 +1,16 @@
 import { useState} from 'react';
 
-function SearchCity ({ city, setCity }) {
+function SearchCity ({ city, handleCitySubmit }) {
+
+    const [inputValue, setInputValue] = useState(city);
 
     const handleCityInput = (e) => { // get city from user
-        setCity(e.target.value);
+        setInputValue(e.target.value);
     }
 
     function handleSubmit(e){
         e.preventDefault();
+        handleCitySubmit(inputValue);
   }
 
     return (
@@ -15,7 +18,7 @@ function SearchCity ({ city, setCity }) {
           <form onSubmit={handleSubmit}>
             <input 
               type="text" 
-              value={city} 
+              value={inputValue} 
               onChange={handleCityInput} 
               placeholder="Where would you like to go?" 
             />
