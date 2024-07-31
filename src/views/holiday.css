@@ -1,0 +1,25 @@
+body{
+   color:  #2C1119;
+   background-color: #DBE3E9;
+}
+
+h1{
+    font-weight:700;
+}
+
+p{
+    font-weight:400;
+}
+
+.yellow{
+    color: #FCDA5C;
+}
+.red{
+    color:  #EF4B47;
+}
+.blue{
+    color:  #49A0CC;
+}
+.green{
+    color:  #ADD139;
+}
