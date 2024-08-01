@@ -7,6 +7,7 @@ import './holiday.css';
 function Events({ city, setCity }) {
     const [error, setError] = useState('');
     const [events, setEvents] = useState([]);
+    const [classification, setClassification] = useState('');
     const location = useLocation();
     const navigate = useNavigate();
 
@@ -22,15 +23,24 @@ function Events({ city, setCity }) {
         navigate(`/events?city=${submittedCity}`); // Update URL with new query parameter
       };
 
+       // Handle category selection
+      const handleCategoryClick = (category) => {
+      setClassification(category); // Update classification state
+      navigate(`/events?city=${city}&classification=${category}`); // Update URL with category
+      };
+
       useEffect(() => {
         const cityFromQuery = getQueryParams();
+        const classificationFromQuery = new URLSearchParams(location.search).get('classification');
         if (cityFromQuery) {
-          searchEvent(cityFromQuery);
+          setCity(cityFromQuery);
+          setClassification(classificationFromQuery || ''); // Set classification from URL or default
+          searchEvent(cityFromQuery, classificationFromQuery);
         }
       }, [location.search]); 
 
       // error handling
-    async function searchEvent(cityToSearch) {
+        async function searchEvent(cityToSearch, classificationToSearch) {
         setError('');
         if (!cityToSearch) {
           setError("Please enter a city name");
@@ -43,7 +53,8 @@ function Events({ city, setCity }) {
             params: {
                 apikey: '2gfUGkqfbk07TW7g5XNYP8tmcHAV9OP7',
                 city: cityToSearch, // Passing the city name to the API
-                countryCode: 'US' // restricted to the us 
+                countryCode: 'US', // restricted to the us 
+                classificationName: classificationToSearch
               }
           });
           if (response.data._embedded && response.data._embedded.events.length > 0) {
@@ -70,6 +81,7 @@ function Events({ city, setCity }) {
 
     return(
       // top half stays the same as home
+      //category buttons to filter results
       // error and response displays
         <div>
         <h1>Your perfect trip starts here</h1>
@@ -79,6 +91,9 @@ function Events({ city, setCity }) {
         <Link className={'response greenbg'} to="/attractions">Attractions</Link> &nbsp;
         <Link className={'response greenbg' } to="/events">Events</Link>
         <h1>Events</h1>
+        <button onClick={() => handleCategoryClick('Sports')} className={'response'}>Sport</button>
+        <button onClick={() => handleCategoryClick('Music')} className={'response'}>Music</button>
+        <button onClick={() => handleCategoryClick('Theatre')} className={'response'}>Theatre</button>
         {error && <p style={{ color: 'red' }}>{error}</p>}
         {events.length > 0 ? (
           events.map((event, index) => (
