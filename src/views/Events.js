@@ -29,7 +29,7 @@ function Events({ city, setCity }) {
         }
       }, [location.search]); 
 
-
+      // error handling
     async function searchEvent(cityToSearch) {
         setError('');
         if (!cityToSearch) {

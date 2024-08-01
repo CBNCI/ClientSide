@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
-import React from 'react';
+import { useState, useEffect, React } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
-import SearchCity from '../components/SearchCity';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import SearchCity from '../components/SearchCity'; // getting value for city from search function 
+import './holiday.css';
 
 function Attractions({ city, setCity }) {
 
