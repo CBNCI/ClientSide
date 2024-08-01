@@ -1,15 +1,22 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import SearchCity from '../components/SearchCity';
 
 
 function Home({ city, setCity }) {
 
+    const navigate = useNavigate();
+
+    const handleCitySubmit = (submittedCity) => {
+        setCity(submittedCity); // Update city with the searched city
+        navigate(`/events?city=${encodeURIComponent(submittedCity)}`); // Redirect to events page with city query parameter
+      };
+
     return(
     <div>
         <div>
             <h1>Discover the US</h1>
-            <SearchCity city={city} setCity={setCity} />
+            <SearchCity city={city} handleCitySubmit={handleCitySubmit} />
             <br></br>
             <Link className={'response greenbg'} to="/accomodation">Accomodation</Link> &nbsp;
             <Link className={'response greenbg'} to="/attractions">Attractions</Link> &nbsp;

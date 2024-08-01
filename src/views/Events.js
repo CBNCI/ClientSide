@@ -1,19 +1,37 @@
-import { useState, useEffect } from 'react';
-import React from 'react';
+import { useState, useEffect, React } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom'; // allow navigation from other page and carry over the search value
 import SearchCity from '../components/SearchCity'; // getting value for city from search function 
 import './holiday.css';
 
 function Events({ city, setCity }) {
     const [error, setError] = useState('');
     const [events, setEvents] = useState([]);
-    const [submittedCity, setSubmittedCity] = useState('');
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    // get value from previous pages' search
+    const getQueryParams = () => {
+      const query = new URLSearchParams(location.search);
+      return query.get('city');
+    };
+
+      // allow submitting a new city search
+      const handleCitySubmit = (submittedCity) => {
+        setCity(submittedCity); // Update city state
+        navigate(`/events?city=${submittedCity}`); // Update URL with new query parameter
+      };
+
+      useEffect(() => {
+        const cityFromQuery = getQueryParams();
+        if (cityFromQuery) {
+          searchEvent(cityFromQuery);
+        }
+      }, [location.search]); 
+
 
     async function searchEvent(cityToSearch) {
         setError('');
-        setEvents([]);
-
         if (!cityToSearch) {
           setError("Please enter a city name");
           return; 
@@ -24,7 +42,7 @@ function Events({ city, setCity }) {
         const response = await axios.get('https://app.ticketmaster.com/discovery/v2/events.json', {
             params: {
                 apikey: '2gfUGkqfbk07TW7g5XNYP8tmcHAV9OP7',
-                city, // Passing the city name to the API
+                city: cityToSearch, // Passing the city name to the API
                 countryCode: 'US' // restricted to the us 
               }
           });
@@ -49,28 +67,17 @@ function Events({ city, setCity }) {
         }     
     }
 
-    function handleCitySubmit(submittedCity) {
-        setCity(submittedCity); 
-        setSubmittedCity(submittedCity);// Update city with the submitted city
-      }
-
-    useEffect(() => {
-      // running search event function
-        if (submittedCity) {
-          searchEvent(submittedCity);
-        }
-      }, [submittedCity]);
 
     return(
       // top half stays the same as home
       // error and response displays
         <div>
         <h1>Your perfect trip starts here</h1>
-        <SearchCity city={city} handleCitySubmit={handleCitySubmit}  />
+        <SearchCity city={city} handleCitySubmit={handleCitySubmit} />
         <br></br>
         <Link className={'response greenbg'} to="/accomodation">Accomodation</Link> &nbsp;
-            <Link className={'response greenbg'} to="/attractions">Attractions</Link> &nbsp;
-            <Link className={'response greenbg' } to="/events">Events</Link>
+        <Link className={'response greenbg'} to="/attractions">Attractions</Link> &nbsp;
+        <Link className={'response greenbg' } to="/events">Events</Link>
         <h1>Events</h1>
         {error && <p style={{ color: 'red' }}>{error}</p>}
         {events.length > 0 ? (
