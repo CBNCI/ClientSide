@@ -6,9 +6,10 @@ function Navbar() {
 
     return(
         <nav>
-            <Link to="/">Home</Link> |&nbsp;
-            <Link to="/contact">Contact</Link> |&nbsp;
-            <Link to="/reviews">Reviews</Link> 
+            <img src='/logowhite.png' style={{width: '20px' }}></img> &nbsp;
+            <Link className={"white"} to="/">RPC US Travel</Link> &nbsp;
+            <Link className={"white"} to="/contact">Contact</Link> &nbsp;
+            <Link className={"white"} to="/reviews">Reviews</Link> 
         </nav>
     );
 }

@@ -68,9 +68,9 @@ function Events({ city, setCity }) {
         <h1>Your perfect trip starts here</h1>
         <SearchCity city={city} handleCitySubmit={handleCitySubmit}  />
         <br></br>
-        <Link to="/accomodation">Accomodation</Link> |&nbsp;
-        <Link to="/attractions">Attractions</Link> |&nbsp;
-        <Link to="/events">Events</Link>
+        <Link className={'response greenbg'} to="/accomodation">Accomodation</Link> &nbsp;
+            <Link className={'response greenbg'} to="/attractions">Attractions</Link> &nbsp;
+            <Link className={'response greenbg' } to="/events">Events</Link>
         <h1>Events</h1>
         {error && <p style={{ color: 'red' }}>{error}</p>}
         {events.length > 0 ? (

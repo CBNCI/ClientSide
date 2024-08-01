@@ -18,9 +18,38 @@ p{
 /*linke styling (no underline, black text)*/
 a{
     text-decoration:none;
-    color:  #2C1119;
+    color:#2C1119;
+}
+/*creating the rounded grey backround used for buttons, responses etc*/
+button, input, .response{
+    background-color: #DBE3E9;
+    border: none;
+    padding: 5px 10px;
+    text-decoration: none;
+    margin: 5px;
+    border-radius: 10px;
+}
+/*setting sizes and rounded corners for images*/
+img{
+    max-width: 800px;
+    border-radius: 10px;
+}
+/*navbar styling*/
+nav{
+    background-color: #2C1119;
+    color: #F5FCFF;
+    border: none;
+    padding: 5px 10px;
+    margin: 5px;
+    border-radius: 10px;
 }
 
+.white{
+    color: #F5FCFF;
+}
+.black{
+    color:#2C1119;
+}
 .yellow{
     color: #FCDA5C;
 }
@@ -32,18 +61,4 @@ a{
 }
 .greenbg{
     background-color:  #ADD139;
-}
-button, input, .response{
-    background-color: #DBE3E9;
-    border: none;
-    padding: 5px 10px;
-    text-decoration: none;
-    margin: 5px;
-    border-radius: 10px;
-}
-
-img{
-    min-width: 300px;
-    max-width: 800px;
-    border-radius: 10px;
 }
