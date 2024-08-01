@@ -5,11 +5,15 @@ import SearchCity from '../components/SearchCity';
 
 function Home({ city, setCity }) {
 
-    const navigate = useNavigate();
+    const navigate = useNavigate(); // allow navigation to other page on submit
 
     const handleCitySubmit = (submittedCity) => {
         setCity(submittedCity); // Update city with the searched city
         navigate(`/events?city=${encodeURIComponent(submittedCity)}`); // Redirect to events page with city query parameter
+      };
+
+    const handleCityButtonClick = (cityName) => {
+        handleCitySubmit(cityName);// make visit city buttons functional
       };
 
     return(
@@ -27,14 +31,14 @@ function Home({ city, setCity }) {
             <div col-3>
             <h2>Popular Destinations</h2>
             <img src= '/ny.jpg'></img>
-            <p>New York <button className={'greenbg'}>Visit</button> </p>
+            <p>New York <button className={'greenbg'} onClick={() => handleCityButtonClick('New York')}>Visit</button> </p>
             </div>
             <img src= '/chi.jpeg'></img>
-            <p>Chicago <button className={'greenbg'}>Visit</button> </p>
+            <p>Chicago <button className={'greenbg'} onClick={() => handleCityButtonClick('Chicago')}>Visit</button> </p>
             <img src= '/sanfran.webp'></img>
-            <p>San Fransisco <button className={'greenbg'}>Visit</button> </p>
+            <p>San Fransisco <button className={'greenbg'} onClick={() => handleCityButtonClick('San Francisco')}>Visit</button> </p>
             <img src= '/dallas.webp'></img>
-            <p>Dallas <button className={'greenbg'}>Visit</button> </p>
+            <p>Dallas <button className={'greenbg'} onClick={() => handleCityButtonClick('Dallas')}>Visit</button> </p>
         </div>
     </div>
     );

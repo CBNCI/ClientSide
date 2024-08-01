@@ -88,6 +88,9 @@ function Events({ city, setCity }) {
               <h2 >{event.name}</h2>
               <p >{new Date(event.dates.start.dateTime).toLocaleDateString()}</p>
               <p >{event._embedded?.venues?.[0]?.name}</p>
+              <a href={event.url} target="_blank" rel="noopener noreferrer">
+              <button className="greenbg" >Book Now</button>
+              </a>
             </div>
                     ))
           ) : 
