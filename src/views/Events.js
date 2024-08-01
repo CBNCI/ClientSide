@@ -3,14 +3,16 @@ import React from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import SearchCity from '../components/SearchCity'; // getting value for city from search function 
+import './holiday.css';
 
 function Events({ city, setCity }) {
     const [error, setError] = useState('');
-    const [name, setName] = useState('');
+    const [events, setEvents] = useState([]);
     const [submittedCity, setSubmittedCity] = useState('');
 
     async function searchEvent(cityToSearch) {
         setError('');
+        setEvents([]);
 
         if (!cityToSearch) {
           setError("Please enter a city name");
@@ -28,7 +30,7 @@ function Events({ city, setCity }) {
           });
           if (response.data._embedded && response.data._embedded.events.length > 0) {
             // feeding back name
-            setName(response.data._embedded.events[0].name);
+            setEvents(response.data._embedded.events.slice(0, 4));
           } 
           else {
             // error response
@@ -71,7 +73,19 @@ function Events({ city, setCity }) {
         <Link to="/events">Events</Link>
         <h1>Events</h1>
         {error && <p style={{ color: 'red' }}>{error}</p>}
-        {name && <p>Event: {name}</p>}
+        {events.length > 0 ? (
+          events.map((event, index) => (
+            <div key={index} className={'response'} >
+              {event.images && event.images[0] && (
+              <img src={event.images[0].url} alt={event.name} />)}
+              <h2 >{event.name}</h2>
+              <p >{new Date(event.dates.start.dateTime).toLocaleDateString()}</p>
+              <p >{event._embedded?.venues?.[0]?.name}</p>
+            </div>
+                    ))
+          ) : 
+          (!error && <p>No events found</p>)
+        }
         </div>
 );
 }

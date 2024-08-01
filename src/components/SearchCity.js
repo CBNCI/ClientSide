@@ -1,4 +1,5 @@
 import { useState} from 'react';
+import '../views/holiday.css';
 
 function SearchCity ({ city, handleCitySubmit }) {
 

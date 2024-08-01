@@ -1,14 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+/*body styling*/
 body{
    color:  #2C1119;
-   background-color: #DBE3E9;
+   background-color: #F5FCFF;
+   font-family: 'Cabin', sans-serif;
 }
-
+/*h1 styling (bold)*/
 h1{
     font-weight:700;
+    color:  #EF4B47;
 }
-
+/*p styling (light)*/
 p{
     font-weight:400;
+}
+/*linke styling (no underline, black text)*/
+a{
+    text-decoration:none;
+    color:  #2C1119;
 }
 
 .yellow{
@@ -20,6 +30,20 @@ p{
 .blue{
     color:  #49A0CC;
 }
-.green{
-    color:  #ADD139;
+.greenbg{
+    background-color:  #ADD139;
+}
+button, input, .response{
+    background-color: #DBE3E9;
+    border: none;
+    padding: 5px 10px;
+    text-decoration: none;
+    margin: 5px;
+    border-radius: 10px;
+}
+
+img{
+    min-width: 300px;
+    max-width: 800px;
+    border-radius: 10px;
 }
