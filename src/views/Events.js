@@ -116,3 +116,4 @@ function Events({ city, setCity }) {
 }
 
 export default Events;
+
