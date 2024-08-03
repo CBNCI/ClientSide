@@ -18,7 +18,7 @@ function App() {
         <Routes>
         <Route path='/' element={<Home city={city} setCity={setCity} />} />
         <Route path='/contact' element={<Contact city={city} />} />
-        <Route path='/About' element={<About city={city} />} />
+        <Route path='/about' element={<About city={city} />} />
         <Route path='/events' element={<Events city={city} setCity={setCity} />} />
         <Route path='/accomodation' element={<Accomodation city={city} />} />
         <Route path='/attractions' element={<Attractions city={city} />} />
