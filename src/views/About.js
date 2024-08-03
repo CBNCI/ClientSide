@@ -15,7 +15,7 @@ function About() {
                     <li>Curated accommodation options</li>
                     <li>Insider tips on attractions</li>
                 </ul>
-                <h4>TESTTTTTTTTTTTTTTTTT</h4>
+                <h4>TESTTT</h4>
             </div>
         </div>
     );
