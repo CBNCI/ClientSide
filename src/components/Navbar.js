@@ -9,7 +9,7 @@ function Navbar() {
             <img src='/logowhite.png' style={{width: '20px' }}></img> &nbsp;
             <Link className={"white"} to="/">RPC US Travel</Link> &nbsp;
             <Link className={"white"} to="/contact">Contact</Link> &nbsp;
-            <Link className={"white"} to="/reviews">Reviews</Link> 
+            <Link className={"white"} to="/about">About</Link> 
         </nav>
     );
 }

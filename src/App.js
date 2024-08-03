@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Contact from './views/Contact';
 import Home from './views/Home';
-import Reviews from './views/Reviews';
+import About from './views/About';
 import Events from './views/Events';
 import Accomodation from './views/Accomodation';
 import Attractions from './views/Attractions';
@@ -18,7 +18,7 @@ function App() {
         <Routes>
         <Route path='/' element={<Home city={city} setCity={setCity} />} />
         <Route path='/contact' element={<Contact city={city} />} />
-        <Route path='/reviews' element={<Reviews city={city} />} />
+        <Route path='/about' element={<About city={city} />} />
         <Route path='/events' element={<Events city={city} setCity={setCity} />} />
         <Route path='/accomodation' element={<Accomodation city={city} />} />
         <Route path='/attractions' element={<Attractions city={city} />} />
