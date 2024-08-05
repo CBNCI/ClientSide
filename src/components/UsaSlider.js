@@ -4,6 +4,7 @@ import { FaEye, FaBullseye, FaStar } from 'react-icons/fa'; // Import icons
 import 'bootstrap/dist/css/bootstrap.min.css'; // Ensure Bootstrap CSS is imported
 import '../App.css'; // Ensure your custom CSS is imported
 
+
 const UsaSlider = () => {
   return (
     <>
