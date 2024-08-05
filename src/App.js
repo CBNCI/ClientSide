@@ -42,6 +42,7 @@ import Events from "./views/Events";
 import Accomodation from "./views/Accomodation";
 import Attractions from "./views/Attractions";
 import AttractionDetail from "./views/AttractionDetail"; // Import the new component
+import UsaSlider from "./components/UsaSlider";
 import { useState } from "react";
 
 function App() {

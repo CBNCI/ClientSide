@@ -35,4 +35,138 @@
   to {
     transform: rotate(360deg);
   }
+
+ /* General styles */
+body {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+}
+
+/* Carousel image styling */
+.carousel-item img {
+  object-fit:cover;
+}
+
+/* Improve contrast for carousel text */
+.carousel-caption-overlay {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.carousel-caption-overlay h3,
+.carousel-caption-overlay p {
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+}
+
+/* Section spacing */
+.section {
+  padding: 80px 0;
+}
+
+/* Our Company section */
+.bg-white {
+  background-color: #f8f9fa;
+}
+
+.company-heading {
+  color: #333;
+  margin-bottom: 30px;
+  font-size: 2.5rem;
+}
+
+.company-text {
+  color: #666;
+  margin-bottom: 20px;
+  font-size: 1.1rem;
+}
+
+.read-more-btn {
+  background-color: #007bff;
+  border: none;
+  color: #fff;
+  padding: 12px 24px;
+  font-weight: bold;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.read-more-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Vision, Mission and Values section */
+.bg-c-light {
+  background-color: #e9ecef;
+  padding: 80px 0;
+}
+
+.main-heading {
+  margin-bottom: 30px;
+  color: #333;
+  font-size: 3rem;
+}
+
+.underline {
+  width: 100px;
+  height: 3px;
+  background-color: #007bff;
+  margin: 0 auto 50px;
+}
+
+.vmv-section {
+  margin-bottom: 40px;
+}
+
+.vmv-icon {
+  font-size: 3rem;
+  color: #007bff;
+  margin-bottom: 20px;
+}
+
+.vmv-section h6 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.vmv-section p,
+.vmv-section ul {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #666;
+}
+
+.vmv-section ul {
+  list-style-type: none;
+  padding-left: 0;
+  text-align: left;
+}
+
+.vmv-section ul li {
+  margin-bottom: 15px;
+  position: relative;
+  padding-left: 25px;
+}
+
+.vmv-section ul li:before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #007bff;
+  font-size: 1.2rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .main-heading {
+      font-size: 2.5rem;
+  }
+  
+  .vmv-section {
+      margin-bottom: 60px;
+  }
+} 
 }
