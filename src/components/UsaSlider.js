@@ -2,6 +2,7 @@ import React from 'react'
 import { Carousel } from 'react-bootstrap';
 import { FaEye, FaBullseye, FaStar } from 'react-icons/fa'; // Import icons
 
+
 const UsaSlider = () => {
   return (
       <>
