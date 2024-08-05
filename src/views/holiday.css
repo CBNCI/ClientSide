@@ -2,9 +2,13 @@
 
 /*body styling*/
 body{
-   color:  #2C1119;
-   background-color: #F5FCFF;
-   font-family: 'Cabin', sans-serif;
+  color:  #2C1119;
+  font-family: 'Cabin', sans-serif;
+  background: linear-gradient(to top, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.7)), url('/public/bg.jpg') no-repeat center center fixed;
+  background-size: cover;
+  min-height: 100vh;
+  margin: 0;
+  font-family: Arial, sans-serif;
 }
 /*h1 styling (bold)*/
 h1{
@@ -62,3 +66,99 @@ nav{
 .greenbg{
     background-color:  #ADD139;
 }
+
+.greenbg:hover{
+    background-color:  #b1d637;
+}
+
+.cards img{
+    height: 150px;
+}
+
+/* Grid for attractions */
+.attractions-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.attraction-item {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  background-color: #DBE3E9;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.attraction-item:hover {
+  transform: translate(10px);
+}
+
+.attraction-item img {
+  width: 150px;
+  height:150px;
+  border-radius: 8px;
+  
+}
+
+.attraction-item .content {
+  flex-grow: 1;
+}
+
+.attraction-item .content h2 {
+  font-size: 1.5rem;
+  color: #333;
+  margin: 0;
+}
+
+.attraction-item .content p {
+  font-size: 1rem;
+  color: #555;
+  margin: 10px 0;
+}
+
+
+
+.attraction-item .more-details a {
+  display: inline-block;
+  padding: 7px 10px;
+  background-color: #EF4B47;
+  color: #fff;
+  border-radius: 4px;
+  border-color: #EF4B47;
+  text-decoration: none;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.attraction-item .more-details a:hover {
+  background-color: #c43d3b;
+}
+
+/* Pagination styles */
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+    
+}
+
+.pagination button {
+  background-color: #EF4B47;
+  border: none;
+  margin: 0 5px;
+  padding: 10px 15px;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  text-decoration: none;
+}
+
+.pagination button.active,
+.pagination button:hover {
+  background-color: #c43d3b;
+}
+
