@@ -1,50 +1,42 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+html, body, #root {
+  height: 100%;
+  margin: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content-wrap {
+  flex: 1;
+}
+
+.footer {
+  background-color: #2C1119;
   color: white;
+  text-align: center;
+  padding: 20px 0;
+  width: 100%;
 }
 
-.App-link {
-  color: #61dafb;
+.footer a {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-
- /* General styles */
-body {
-  font-family: 'Arial', sans-serif;
-  line-height: 1.6;
+.footer a:hover {
+  text-decoration: underline;
 }
 
-/* Carousel image styling */
-.carousel-item img {
-  object-fit:cover;
+.carousel-img {
+  width: 100% !important;
+  height: 600px !important;
+  object-fit: cover !important;
 }
 
 /* Improve contrast for carousel text */
@@ -57,7 +49,7 @@ body {
 .carousel-caption-overlay h3,
 .carousel-caption-overlay p {
   color: #fff;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
 }
 
 /* Section spacing */
@@ -162,11 +154,10 @@ body {
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .main-heading {
-      font-size: 2.5rem;
+    font-size: 2.5rem;
   }
-  
+
   .vmv-section {
-      margin-bottom: 60px;
+    margin-bottom: 60px;
   }
-} 
 }

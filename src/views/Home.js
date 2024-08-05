@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import SearchCity from '../components/SearchCity';
+import Footer from "../components/Footer";
+import '../App.css';
 
 function Home({ city, setCity }) {
   const [popularAttractions, setPopularAttractions] = useState([]);
@@ -58,90 +60,93 @@ function Home({ city, setCity }) {
   };
 
   return (
-    <div>
-      <div className="container cards">
-        <h1 className="my-5 display-3 fw-bolder">Discover the US</h1>
-        <SearchCity city={city} handleCitySubmit={handleCitySubmit} />
-        <br />
-        <div className="d-flex justify-content-center my-2">
-          <Link className="btn greenbg mb-3" to="/accommodation">Accommodation</Link> &nbsp;
-          <Link className="btn greenbg mx-4 mb-3" to="/attractions">Attractions</Link> &nbsp;
-          <Link className="btn greenbg mb-3" to="/events">Events</Link>
-        </div>
-        <h2 className="mt-5 mb-4 fw-bold">Popular Destinations</h2>
-        <div className="row row-cols-md-4 g-4">
-          <div className="col">
-            <div>
-              <img src="/ny.jpg" className="card-img-top rounded" alt="" />
-              <div className="row row-cols-md-2">
-                <div className="col-md-8">
-                  <h5 className="pt-2">New York</h5>
-                </div>
-                <div className="col-md-4">
-                  <button className="btn greenbg px-4 mt-2 py-1" onClick={() => handleCityButtonClick('New York')}>Visit</button>
-                </div>
-              </div>
-            </div>
+    <div className="page-container">
+      <div className="content-wrap">
+        <div className="container cards">
+          <h1 className="my-5 display-3 fw-bolder">Discover the US</h1>
+          <SearchCity city={city} handleCitySubmit={handleCitySubmit} />
+          <br />
+          <div className="d-flex justify-content-center my-2">
+            <Link className="btn greenbg mb-3" to="/accommodation">Accommodation</Link> &nbsp;
+            <Link className="btn greenbg mx-4 mb-3" to="/attractions">Attractions</Link> &nbsp;
+            <Link className="btn greenbg mb-3" to="/events">Events</Link>
           </div>
-          <div className="col">
-            <div>
-              <img src="/chi.jpeg" className="card-img-top rounded" alt="" />
-              <div className="row row-cols-md-2">
-                <div className="col-md-8">
-                  <h5 className="pt-2">Chicago</h5>
-                </div>
-                <div className="col-md-4">
-                  <button className="btn greenbg px-4 mt-2 py-1" onClick={() => handleCityButtonClick('Chicago')}>Visit</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="col">
-            <div>
-              <img src="/sanfran.webp" className="card-img-top rounded" alt="" />
-              <div className="row row-cols-md-2">
-                <div className="col-md-8">
-                  <h5 className="pt-2">San Francisco</h5>
-                </div>
-                <div className="col-md-4">
-                  <button className="btn greenbg px-4 mt-2 py-1" onClick={() => handleCityButtonClick('San Francisco')}>Visit</button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="col">
-            <div>
-              <img src="/dallas.webp" className="card-img-top rounded" alt="" />
-              <div className="row row-cols-md-2">
-                <div className="col-md-8">
-                  <h5 className="pt-2">Dallas</h5>
-                </div>
-                <div className="col-md-4">
-                  <button className="btn greenbg px-4 mt-2 py-1" onClick={() => handleCityButtonClick('Dallas')}>Visit</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <h2 className="mt-5 mb-4 pt-5 text-end fw-bold">Popular Attractions</h2>
-        <div className="row row-cols-md-4 g-4">
-          {popularAttractions.map((attraction, index) => (
-            <div key={index} className="col">
+          <h2 className="mt-5 mb-4 fw-bold">Popular Destinations</h2>
+          <div className="row row-cols-md-4 g-4">
+            <div className="col">
               <div>
-                <img src={attraction.details.preview?.source || '/placeholder.jpg'} className="card-img-top rounded" alt={attraction.name} />
+                <img src="/ny.jpg" className="card-img-top rounded" alt="" />
                 <div className="row row-cols-md-2">
                   <div className="col-md-8">
-                    <h5 className="pt-2">{attraction.name}</h5>
+                    <h5 className="pt-2">New York</h5>
                   </div>
                   <div className="col-md-4">
-                    <button className="btn greenbg px-4 mt-2 py-1" onClick={() => handleAttractionButtonClick(attraction.xid)}>Visit</button>
+                    <button className="btn greenbg px-4 mt-2 py-1" onClick={() => handleCityButtonClick('New York')}>Visit</button>
                   </div>
                 </div>
               </div>
             </div>
-          ))}
-        </div>
+            <div className="col">
+              <div>
+                <img src="/chi.jpeg" className="card-img-top rounded" alt="" />
+                <div className="row row-cols-md-2">
+                  <div className="col-md-8">
+                    <h5 className="pt-2">Chicago</h5>
+                  </div>
+                  <div className="col-md-4">
+                    <button className="btn greenbg px-4 mt-2 py-1" onClick={() => handleCityButtonClick('Chicago')}>Visit</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="col">
+              <div>
+                <img src="/sanfran.webp" className="card-img-top rounded" alt="" />
+                <div className="row row-cols-md-2">
+                  <div className="col-md-8">
+                    <h5 className="pt-2">San Francisco</h5>
+                  </div>
+                  <div className="col-md-4">
+                    <button className="btn greenbg px-4 mt-2 py-1" onClick={() => handleCityButtonClick('San Francisco')}>Visit</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="col">
+              <div>
+                <img src="/dallas.webp" className="card-img-top rounded" alt="" />
+                <div className="row row-cols-md-2">
+                  <div className="col-md-8">
+                    <h5 className="pt-2">Dallas</h5>
+                  </div>
+                  <div className="col-md-4">
+                    <button className="btn greenbg px-4 mt-2 py-1" onClick={() => handleCityButtonClick('Dallas')}>Visit</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <h2 className="mt-5 mb-4 pt-5 text-end fw-bold">Popular Attractions</h2>
+          <div className="row row-cols-md-4 g-4">
+            {popularAttractions.map((attraction, index) => (
+              <div key={index} className="col">
+                <div>
+                  <img src={attraction.details.preview?.source || '/placeholder.jpg'} className="card-img-top rounded" alt={attraction.name} />
+                  <div className="row row-cols-md-2">
+                    <div className="col-md-8">
+                      <h5 className="pt-2">{attraction.name}</h5>
+                    </div>
+                    <div className="col-md-4">
+                      <button className="btn greenbg px-4 mt-2 py-1" onClick={() => handleAttractionButtonClick(attraction.xid)}>Visit</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div> 
       </div>
+      <Footer />
     </div>
   );
 }

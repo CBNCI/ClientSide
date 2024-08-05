@@ -1,9 +1,10 @@
-import { useState, useEffect, React } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import SearchCity from '../components/SearchCity';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './holiday.css';
+import Footer from "../components/Footer";
 
 function Attractions({ city, setCity }) {
   const [error, setError] = useState('');
@@ -38,7 +39,7 @@ function Attractions({ city, setCity }) {
       const geoResponse = await axios.get('https://api.opentripmap.com/0.1/en/places/geoname', {
         params: {
           name: cityName,
-          apikey: '5ae2e3f221c38a28845f05b65d8e7a9cf1df63a086e80f2cdc5a8c09' // Replace with your OpenTripMap API key
+          apikey: '5ae2e3f221c38a28845f05b65d8e7a9cf1df63a086e80f2cdc5a8c09'
         }
       });
 
@@ -52,7 +53,7 @@ function Attractions({ city, setCity }) {
           kinds: 'interesting_places', // specify the kind of places
           rate: 3,
           format: 'json',
-          apikey: '5ae2e3f221c38a28845f05b65d8e7a9cf1df63a086e80f2cdc5a8c09' // Replace with your OpenTripMap API key
+          apikey: '5ae2e3f221c38a28845f05b65d8e7a9cf1df63a086e80f2cdc5a8c09'
         }
       });
 
@@ -64,7 +65,7 @@ function Attractions({ city, setCity }) {
         paginatedAttractions.map(async (attraction) => {
           const detailsResponse = await axios.get(`https://api.opentripmap.com/0.1/en/places/xid/${attraction.xid}`, {
             params: {
-              apikey: '5ae2e3f221c38a28845f05b65d8e7a9cf1df63a086e80f2cdc5a8c09' // Replace with your OpenTripMap API key
+              apikey: '5ae2e3f221c38a28845f05b65d8e7a9cf1df63a086e80f2cdc5a8c09'
             }
           });
           await new Promise(resolve => setTimeout(resolve, 200)); // Delay to handle rate limiting
@@ -132,40 +133,45 @@ function Attractions({ city, setCity }) {
   };
 
   return (
-    <div className="container">
-      <h1 className="my-5 display-3 fw-bolder">Your perfect trip starts here</h1>
-      <SearchCity city={city} handleCitySubmit={handleCitySubmit} />
-      <br />
-      <div className="d-flex justify-content-center my-2">
-        <Link className="greenbg btn btn-success mb-3" to="/accommodation">Accommodation</Link> &nbsp;
-        <Link className="greenbg btn btn-success mx-4 mb-3" to="/attractions">Attractions</Link> &nbsp;
-        <Link className="greenbg btn btn-success mb-3" to="/events">Events</Link>
+    <div className="page-container">
+      <div className="content-wrap">
+        <div className="container">
+          <h1 className="my-5 display-3 fw-bolder">Your perfect trip starts here</h1>
+          <SearchCity city={city} handleCitySubmit={handleCitySubmit} />
+          <br />
+          <div className="d-flex justify-content-center my-2">
+            <Link className="greenbg btn mb-3" to="/accommodation">Accommodation</Link> &nbsp;
+            <Link className="greenbg btn mx-4 mb-3" to="/attractions">Attractions</Link> &nbsp;
+            <Link className="greenbg btn mb-3" to="/events">Events</Link>
+          </div>
+          <h2 className="my-4">Attractions</h2>
+          {error && <p style={{ color: 'red' }}>{error}</p>}
+          <div className="attractions-grid">
+            {attractions.length > 0 ? (
+              attractions.map((attraction, index) => (
+                <div key={index} className="response attraction-item d-flex align-items-start mb-4 p-3 border rounded shadow-sm">
+                  <img src={attraction.details.preview?.source || 'placeholder.jpg'} alt={attraction.name} className="img-fluid me-3" style={{maxWidth: '200px', borderRadius: '8px'}} />
+                  <div className="content flex-grow-1">
+                    <h2 className="h4 fw-bold">{attraction.name}</h2>
+                    {attraction.details.wikipedia_extracts && (
+                      <p className="w-75">{attraction.details.wikipedia_extracts.text.substring(0, 100)}...</p>
+                    )}
+                  </div>
+                  <div className="more-details align-self-end">
+                    <Link to={`/attraction/${attraction.xid}`} className="btn btn-primary">More details</Link>
+                  </div>
+                </div>
+              ))
+            ) : (
+              !error && <p>No attractions found</p>
+            )}
+          </div>
+          <div className="pagination d-flex justify-content-center my-4">
+            {renderPagination()}
+          </div>
+        </div>
       </div>
-      <h2 className="my-4">Attractions</h2>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
-      <div className="attractions-grid">
-        {attractions.length > 0 ? (
-          attractions.map((attraction, index) => (
-            <div key={index} className="response attraction-item d-flex align-items-start mb-4 p-3 border rounded shadow-sm">
-              <img src={attraction.details.preview?.source || 'placeholder.jpg'} alt={attraction.name} className="img-fluid me-3" style={{maxWidth: '200px', borderRadius: '8px'}} />
-              <div className="content flex-grow-1">
-                <h2 className="h4 fw-bold">{attraction.name}</h2>
-                {attraction.details.wikipedia_extracts && (
-                  <p className="w-75">{attraction.details.wikipedia_extracts.text.substring(0, 100)}...</p>
-                )}
-              </div>
-              <div className="more-details align-self-end">
-                <Link to={`/attraction/${attraction.xid}`} className="btn btn-primary">More details</Link>
-              </div>
-            </div>
-          ))
-        ) : (
-          !error && <p>No attractions found</p>
-        )}
-      </div>
-      <div className="pagination d-flex justify-content-center my-4">
-        {renderPagination()}
-      </div>
+      <Footer />
     </div>
   );
 }

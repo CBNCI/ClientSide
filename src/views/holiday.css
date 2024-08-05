@@ -35,7 +35,6 @@ button, input, .response{
 }
 /*setting sizes and rounded corners for images*/
 img{
-    max-width: 800px;
     border-radius: 10px;
 }
 /*navbar styling*/
@@ -73,6 +72,12 @@ nav{
 
 .cards img{
     height: 150px;
+}
+
+.events-grid .img-fluid{
+    height:120px;
+    width:200px;
+    
 }
 
 /* Grid for attractions */
@@ -162,3 +167,22 @@ nav{
   background-color: #c43d3b;
 }
 
+.footer {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  background-color: #2C1119;
+  color: white;
+  text-align: center;
+  padding: 20px 0;
+}
+
+.footer a {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
