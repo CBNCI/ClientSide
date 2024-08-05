@@ -79,40 +79,49 @@ function Events({ city, setCity }) {
     }
 
 
-    return(
-      // top half stays the same as home
-      //category buttons to filter results
-      // error and response displays
-        <div>
-        <h1>Your perfect trip starts here</h1>
-        <SearchCity city={city} handleCitySubmit={handleCitySubmit} />
-        <br></br>
-        <Link className={'response greenbg'} to="/accomodation">Accomodation</Link> &nbsp;
-        <Link className={'response greenbg'} to="/attractions">Attractions</Link> &nbsp;
-        <Link className={'response greenbg' } to="/events">Events</Link>
-        <h1>Events</h1>
-        <button onClick={() => handleCategoryClick('Sports')} className={'response'}>Sport</button>
-        <button onClick={() => handleCategoryClick('Music')} className={'response'}>Music</button>
-        <button onClick={() => handleCategoryClick('Theatre')} className={'response'}>Theatre</button>
-        {error && <p style={{ color: 'red' }}>{error}</p>}
+    return (
+    <div className="container">
+      <h1 className="my-5 display-3 fw-bolder">Your perfect trip starts here</h1>
+      <SearchCity city={city} handleCitySubmit={handleCitySubmit} />
+      <br />
+      <div className="d-flex justify-content-center my-2">
+        <Link className="btn greenbg mb-3" to="/accommodation">Accommodation</Link> &nbsp;
+        <Link className="btn greenbg mx-4 mb-3" to="/attractions">Attractions</Link> &nbsp;
+        <Link className="btn greenbg mb-3" to="/events">Events</Link>
+      </div>
+
+      <h2 className="my-4">Events</h2>
+      <div className="d-flex justify-content-left my-2">
+        <button onClick={() => handleCategoryClick('Sports')} className="mx-2 px-4">Sports</button>
+        <button onClick={() => handleCategoryClick('Music')} className="mx-2 px-4">Music</button>
+        <button onClick={() => handleCategoryClick('Theatre')} className="mx-2 px-4">Theatre</button>
+      </div>
+      {error && <p style={{ color: 'red' }}>{error}</p>}
+      <div className="events-grid">
         {events.length > 0 ? (
           events.map((event, index) => (
-            <div key={index} className={'response'} >
+            <div key={index} className="event-item d-flex align-items-start mb-4 p-3 border rounded shadow-sm">
               {event.images && event.images[0] && (
-              <img src={event.images[0].url} alt={event.name} />)}
-              <h2 >{event.name}</h2>
-              <p >{new Date(event.dates.start.dateTime).toLocaleDateString()}</p>
-              <p >{event._embedded?.venues?.[0]?.name}</p>
-              <a href={event.url} target="_blank" rel="noopener noreferrer">
-              <button className="greenbg" >Book Now</button>
-              </a>
+                <img src={event.images[0].url} alt={event.name} className="img-fluid me-3" style={{ maxWidth: '200px', borderRadius: '8px' }} />
+              )}
+              <div className="content flex-grow-1">
+                <h2 className="h4 fw-bold">{event.name}</h2>
+                <p>{new Date(event.dates.start.dateTime).toLocaleDateString()}</p>
+                <p>{event._embedded?.venues?.[0]?.name}</p>
+              </div>
+              <div className="more-details align-self-end">
+                <a href={event.url} target="_blank" rel="noopener noreferrer" className="btn greenbg">Book Now</a>
+              </div>
             </div>
-                    ))
-          ) : 
-          (!error && <p>No events found</p>)
-        }
-        </div>
-);
+          ))
+        ) : (
+          !error && <p>No events found</p>
+        )}
+      </div>
+    </div>
+  );
 }
 
+
 export default Events;
+
