@@ -1,11 +1,19 @@
 import React from 'react';
 import { Carousel } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import { FaEye, FaBullseye, FaStar } from 'react-icons/fa'; // Import icons
 import 'bootstrap/dist/css/bootstrap.min.css'; // Ensure Bootstrap CSS is imported
 import '../App.css'; // Ensure your custom CSS is imported
 
-
 const UsaSlider = () => {
+  const navigate = useNavigate();
+  
+const handleContactClick = () => {
+  navigate('/contact');
+};
+
+
+
   return (
     <>
       <Carousel>
@@ -62,7 +70,8 @@ const UsaSlider = () => {
               <p className="company-text">
                 As we've grown from our humble beginnings in New York to our current headquarters in Austin, our commitment remains unchanged: to inspire and empower people to explore the diverse beauty, culture, and experiences of the United States. Join us on this exciting journey of discovery!
               </p>
-              <button className="btn btn-primary read-more-btn">Want to know more - Contact us!</button>
+              <button className="btn btn-primary read-more-btn"
+              onClick={handleContactClick}>Want to know more - Contact us!</button>
             </div>
           </div>
         </div>
