@@ -1,86 +1,98 @@
 @import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
-/*body styling*/
-body{
-  color:  #2C1119;
+/* General Styles */
+body {
+  color: #2C1119;
   font-family: 'Cabin', sans-serif;
   background: linear-gradient(to top, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0.7)), url('/public/bg.jpg') no-repeat center center fixed;
   background-size: cover;
   min-height: 100vh;
   margin: 0;
-  font-family: Arial, sans-serif;
-}
-/*h1 styling (bold)*/
-h1{
-    font-weight:700;
-    color:  #EF4B47;
-}
-/*p styling (light)*/
-p{
-    font-weight:400;
-}
-/*linke styling (no underline, black text)*/
-a{
-    text-decoration:none;
-    color:#2C1119;
-}
-/*creating the rounded grey backround used for buttons, responses etc*/
-button, input, .response{
-    background-color: #DBE3E9;
-    border: none;
-    padding: 5px 10px;
-    text-decoration: none;
-    margin: 5px;
-    border-radius: 10px;
-}
-/*setting sizes and rounded corners for images*/
-img{
-    border-radius: 10px;
-}
-/*navbar styling*/
-nav{
-    background-color: #2C1119;
-    color: #F5FCFF;
-    border: none;
-    padding: 5px 10px;
-    margin: 5px;
-    border-radius: 10px;
 }
 
-.white{
-    color: #F5FCFF;
-}
-.black{
-    color:#2C1119;
-}
-.yellow{
-    color: #FCDA5C;
-}
-.red{
-    color:  #EF4B47;
-}
-.blue{
-    color:  #49A0CC;
-}
-.greenbg{
-    background-color:  #ADD139;
+/* Heading Styles */
+h1 {
+  font-weight: 700;
+  color: #EF4B47  !important;
 }
 
-.greenbg:hover{
-    background-color:  #b1d637;
+/* Paragraph Styles */
+p {
+  font-weight: 400;
 }
 
-.cards img{
-    height: 150px;
+/* Link Styles */
+a {
+  text-decoration: none !important;
+  color: #2C1119;
 }
 
-.events-grid .img-fluid{
-    height:120px;
-    width:200px;
-    
+
+/* Button, Input, and Response Styles */
+button, input, .response {
+  background-color: #DBE3E9;
+  border: none;
+  padding: 5px 10px;
+  text-decoration: none;
+  margin: 5px;
+  border-radius: 10px  !important;
 }
 
-/* Grid for attractions */
+/* Image Styles */
+img {
+  border-radius: 10px;
+}
+
+/* Navbar Styles */
+nav {
+  background-color: #2C1119;
+  color: #F5FCFF;
+  border: none;
+  padding: 5px 10px;
+  margin: 5px;
+  border-radius: 10px;
+}
+
+.white {
+  color: #F5FCFF;
+}
+
+.black {
+  color: #2C1119;
+}
+
+.yellow {
+  color: #FCDA5C;
+}
+
+.red {
+  color: #EF4B47;
+}
+
+.blue {
+  color: #49A0CC;
+}
+
+.greenbg {
+  background-color: #ADD139  !important;
+}
+
+.greenbg:hover {
+  background-color: #b1d637;
+}
+
+/* Card Image Styles */
+.cards img {
+  height: 150px;
+}
+
+/* Event Grid Image Styles */
+.events-grid .img-fluid {
+  height: 120px;
+  width: 200px;
+}
+
+/* Grid for Attractions */
 .attractions-grid {
   display: flex;
   flex-direction: column;
@@ -99,14 +111,13 @@ nav{
 }
 
 .attraction-item:hover {
-  transform: translate(10px);
+  transform: translateX(10px);
 }
 
 .attraction-item img {
   width: 150px;
-  height:150px;
+  height: 150px;
   border-radius: 8px;
-  
 }
 
 .attraction-item .content {
@@ -125,8 +136,6 @@ nav{
   margin: 10px 0;
 }
 
-
-
 .attraction-item .more-details a {
   display: inline-block;
   padding: 7px 10px;
@@ -142,12 +151,11 @@ nav{
   background-color: #c43d3b;
 }
 
-/* Pagination styles */
+/* Pagination Styles */
 .pagination {
   display: flex;
   justify-content: center;
   margin-top: 20px;
-    
 }
 
 .pagination button {
@@ -167,6 +175,7 @@ nav{
   background-color: #c43d3b;
 }
 
+/* Footer Styles */
 .footer {
   position: relative;
   bottom: 0;

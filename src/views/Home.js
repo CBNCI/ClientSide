@@ -4,6 +4,7 @@ import axios from 'axios';
 import SearchCity from '../components/SearchCity';
 import Footer from "../components/Footer";
 import '../App.css';
+import '../views/holiday.css';
 
 function Home({ city, setCity }) {
   const [popularAttractions, setPopularAttractions] = useState([]);
