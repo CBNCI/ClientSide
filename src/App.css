@@ -73,6 +73,9 @@ html, body, #root {
   margin-bottom: 20px;
   font-size: 1.1rem;
 }
+.card-img-top{
+    height:250px;
+}
 
 .read-more-btn {
   background-color: #007bff;
