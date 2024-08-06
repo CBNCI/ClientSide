@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import Footer from "../components/Footer";
 
+// Variables for form fields + errors
 function Contact() {
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [message, setMessage] = useState('');
   const [errors, setErrors] = useState({ email: '', name: '', message: '' });
 
-  // Function to validate the form - once validated correctly the user will get the below alert on screen
+  // Function to validate the form - once validated correctly (ifValid) the user will get the below alert on screen
   const validateForm = (e) => {
     e.preventDefault();
     let isValid = true;
@@ -90,7 +91,7 @@ function Contact() {
             <button type="submit" className="btn btn-primary">Submit</button>
           </form>
 
-                    {/* Google Maps iframe */}
+                    {/* Google Maps iframe - https://www.maps.ie/create-google-map */}
                     <div className="map-container mb-4" style={{width: '100%', height: '400px'}}>
             <iframe 
               width="100%" 
@@ -103,6 +104,7 @@ function Contact() {
           </div>
         </div>
       </div>
+      {/* Footer component */}
       <Footer />
     </div>
   );
