@@ -5,11 +5,11 @@ import '../views/holiday.css';
 function Navbar() {
 
     return(
-        <nav>
-            <img src='/logowhite.png' style={{width: '20px' }}></img> &nbsp;
-            <Link className={"white"} to="/">RPC US Travel</Link> &nbsp;
-            <Link className={"white"} to="/contact">Contact</Link> &nbsp;
-            <Link className={"white"} to="/reviews">Reviews</Link> 
+        <nav class="py-2">
+            <img src='/logowhite.png' className="" style={{width: '20px' }}></img> &nbsp;
+            <Link className="white" to="/">RPC US Travel</Link> &nbsp;
+            <Link className="white mx-4" to="/contact">Contact</Link> &nbsp;
+            <Link className="white" to="/about">About</Link> 
         </nav>
     );
 }
